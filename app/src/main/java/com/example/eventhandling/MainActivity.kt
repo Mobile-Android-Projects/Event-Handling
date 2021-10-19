@@ -2,6 +2,7 @@ package com.example.eventhandling
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import com.example.eventhandling.databinding.ActivityMainBinding
 
@@ -24,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         binding.myButton.setOnLongClickListener {
             binding.statusText.text = getString(R.string.long_pressed)
             false
+        }
+
+        binding.myLayout.setOnTouchListener{ v, m ->
+            val pointerCount = m.pointerCount
+            val pointerID = m.getPointerId(0)
+            true
         }
     }
 }
